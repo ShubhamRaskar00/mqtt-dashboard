@@ -546,8 +546,12 @@ function initializeMQTTConnection(mqttServer, mqttTopic) {
     `Initializing connection to :: ${mqttServer}, topic :: ${mqttTopic}`
   );
   var fnCallbacks = { onConnect, onMessage, onError, onClose };
-
-  var mqttService = new MQTTService(mqttServer, fnCallbacks);
+  
+  var options = {
+    useSSL: true, // Enable SSL
+  };
+  
+  var mqttService = new MQTTService(mqttServer, fnCallbacks, options);
   mqttService.connect();
 
   mqttService.subscribe(mqttTopic);
