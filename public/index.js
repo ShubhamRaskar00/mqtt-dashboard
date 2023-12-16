@@ -420,13 +420,13 @@ function updateGauge(temperature, humidity, pressure, altitude) {
 }
 
 function updateCharts(lineChartDiv, xArray, yArray, sensorRead) {
-  if (xArray.length >= MAX_GRAPH_POINTS) {
-    xArray.shift();
-  }
+  // if (xArray.length >= MAX_GRAPH_POINTS) {
+  //   xArray.shift();
+  // }
   if (yArray.length >= MAX_GRAPH_POINTS) {
     yArray.shift();
   }
-  xArray.push(ctr++);
+  xArray.push(new Date());
   yArray.push(sensorRead);
 
   var data_update = {
